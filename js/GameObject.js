@@ -43,7 +43,7 @@ class GameObject {
         let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
         eventConfig.who = this.id;
 
-        //Create an event instance out of our next event config
+        //Create an event instance out of our next event config.
         const eventHandler = new OverworldEvent({ map, event: eventConfig });
         await eventHandler.init();
 
