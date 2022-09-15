@@ -58,7 +58,7 @@ class OverworldMap {
 
         this.isCutscenePlaying = false;
 
-        //Reset NPC's to do their idle behavior
+        //Reset NPCs to do their idle behavior
         Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
     }
 

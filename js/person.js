@@ -59,6 +59,7 @@ class Person extends GameObject {
                 utils.emitEvent("PersonStandComplete", {
                     whoId: this.id
                 })
+                this.isStanding = false;
             }, behavior.time)
         }
     }
