@@ -41,6 +41,12 @@ class Overworld {
         }
         step();
     }
+    bindActionInput() {
+        new KeyPressLisstener("Enter", () => {
+            //Is there a person here to talk to?
+            this.map.checkForActionCutscene()
+        })
+    }
 
     init() {
         this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
@@ -51,20 +57,20 @@ class Overworld {
 
         this.startGameLoop();
 
-        this.map.startCutscene([
-            { who: "hero", type: "walk",  direction: "down" },
-            { who: "hero", type: "walk",  direction: "down" },
-            { who: "npcA", type: "walk",  direction: "up" },
-            { who: "npcA", type: "walk",  direction: "left" },
-            { who: "hero", type: "stand",  direction: "right", time: 200 },
-
-            { type: "textMessage", text: "You can't leave yet! I need you to go upstairs and wipe the class window" +
-                    "  before the board members get here!"},
-
-            // { who: "npcA", type: "walk",  direction: "left" },
-            // { who: "npcA", type: "walk",  direction: "left" },
-            // { who: "npcA", type: "stand",  direction: "up", time: 800 },
-        ])
+        // this.map.startCutscene([
+        //     { who: "hero", type: "walk",  direction: "down" },
+        //     { who: "hero", type: "walk",  direction: "down" },
+        //     { who: "npcA", type: "walk",  direction: "up" },
+        //     { who: "npcA", type: "walk",  direction: "left" },
+        //     { who: "hero", type: "stand",  direction: "right", time: 200 },
+        //
+        //     { type: "textMessage", text: "You can't leave yet! I need you to go upstairs and wipe the class window" +
+        //             "  before the board members get here!"},
+        //
+        //     // { who: "npcA", type: "walk",  direction: "left" },
+        //     // { who: "npcA", type: "walk",  direction: "left" },
+        //     // { who: "npcA", type: "stand",  direction: "up", time: 800 },
+        // ])
 
     }
 }
