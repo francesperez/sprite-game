@@ -1,6 +1,16 @@
+:root {
+    --border-color: #072600;
+    --dialog-background: #d4f5c6;
+    --menu-background: #c5dcc2;
+    --menu-border-color: #6c9b4f;
+    --menu-font-color: #31501f;
+    --menu-selected-background: #d2b400;
+}
+
 * {
     box-sizing:border-box;
 }
+
 body {
     background: #3e5227;
     padding: 0;
