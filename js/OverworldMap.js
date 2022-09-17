@@ -64,14 +64,13 @@ class OverworldMap {
 
     checkForActionCutscene() {
         const hero = this.gameObjects["hero"];
-        const nextCords = utils.nextPosition(hero.x, hero.y, hero.direction);
+        const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
         const match = Object.values(this.gameObjects).find(object => {
-            return `${object.x},${object.y}` === `${nextCords.x},${nextCords.y}`
+            return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
         });
-        console.log({match});
-        // if (!this.isCutscenePlaying && match && match.talking.length) {
-        //     this.startCutscene(match.talking[0].events)
-        // }
+        if (!this.isCutscenePlaying && match && match.talking.length) {
+            this.startCutscene(match.talking[0].events)
+        }
 
     }
 
@@ -112,25 +111,26 @@ window.OverworldMaps = {
                 talking: [
                     {
                         events: [
-                            {type: "textMessage", text: "I personally don't care about the GitHub logo but my" +
-                                    " manager wants us to get rid of it."},
-                            {type: "textMessage", text: "Maybe you can draw something else for the Fall Decoration" +
-                                    " Contest..."}
+                            { type: "textMessage", text: "I personally don't care about the GitHub logo but my" +
+                                    " manager wants us to get rid of it.", faceHero: "npcA"},
+                            { type: "textMessage", text: "Maybe you can draw something else for the Fall Decoration" +
+                                    " Contest..."},
+                            { who: "hero", type: "walk",  direction: "up"},
                         ]
                     }
                 ]
             }),
             npcB: new Person({
-                x: utils.withGrid(3),
-                y: utils.withGrid(7),
+                x: utils.withGrid(2),
+                y: utils.withGrid(5),
                 src: "/images/characters/people/npc2.png",
-                behaviorLoop: [
-                    { type: "walk",  direction: "left" },
-                    { type: "stand",  direction: "up", time: 800 },
-                    { type: "walk",  direction: "up" },
-                    { type: "walk",  direction: "right" },
-                    { type: "walk",  direction: "down" },
-                ]
+                // behaviorLoop: [
+                //     { type: "walk",  direction: "left" },
+                //     { type: "stand",  direction: "up", time: 800 },
+                //     { type: "walk",  direction: "up" },
+                //     { type: "walk",  direction: "right" },
+                //     { type: "walk",  direction: "down" },
+                // ]
             }),
         },
         walls: {
@@ -140,6 +140,19 @@ window.OverworldMaps = {
             [utils.asGridCoord(8,7)] : true,
             [utils.asGridCoord(9,6)] : true,
             [utils.asGridCoord(9,7)] : true,
+        },
+        cutsceneSpace: {
+            [utils.asGridCoord(3,5)]: [
+                {
+                    events: [
+                        { who: "npcB", type: "walk", direction: "down" },
+                        { who: "npcB", type: "walk", direction: "down" },
+                        { who: "hero", type: "walk", direction: "down" },
+                        { who: "hero", type: "walk", direction: "left" },
+
+                    ]
+                }
+            ]
         }
     },
     Kitchen: {
