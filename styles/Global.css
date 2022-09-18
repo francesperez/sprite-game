@@ -9,6 +9,7 @@
 
 * {
     box-sizing:border-box;
+    font-family: 'VT323', monospace;
 }
 
 body {
@@ -16,7 +17,6 @@ body {
     padding: 0;
     margin: 0;
     overflow: hidden;
-    font-family: 'Work Sans', sans-serif;
 }
 
 .game-container {
