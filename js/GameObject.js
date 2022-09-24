@@ -39,7 +39,7 @@ class GameObject {
             return;
         }
 
-        //Setting up our event with relevant info
+        //Setting up our event with relevant info.
         let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
         eventConfig.who = this.id;
 
